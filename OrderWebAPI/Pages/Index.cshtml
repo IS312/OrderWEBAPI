@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="details" class="hide">
+    <form>
+        <div class="form-group">
+            <label for="ProductName">Product Name: </label>
+            <select class="form-control" id="ProductName">
+                <option value="Tommy Hilfiger Navy Blue Jeans for Men">Tommy Hilfiger Navy Blue Jeans for Men</option>
+                <option value="H&M Blue-White Striped full sleves shirt for Men">H&M Blue-White Striped full sleves shirt for Men</option>
+                <option value="Levis Black Jeans Women">Levis Black Jeans Women</option>
+                <option value="H&M Blue Demin Jacket for Men">H&M Blue Demin Jacket for Men</option>
+            </select>
+            <input type="hidden" class="form-control" id="OrderID">
+        </div>
+        <div class="form-group">
+            <label for="ProductID">Product ID: </label>
+            <input type="number" class="form-control" id="ProductID">
+        </div>
+        <div class="form-group">
+            <label for="OrderDate">Order Date: </label>
+            <input type="date" class="form-control" id="OrderDate" />
+        </div>
+        <div class="form-group">
+            <label for="OrderStatus">Order Status: </label>
+            <select class="form-control" id="OrderStatus">
+                <option value="Cancelled">Cancelled</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Returned">Returned</option>
+            </select>
+        </div>
+        <button type="button" onclick="saveOrUpdateDetails()"
+                class="btn btn-primary btn-block">
+            Save Order Details
+        </button>
+    </form>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">All Orders History</h1>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="bg-info">
+        <tr>
+            <th>Product Name</th>
+            <th>Product ID</th>
+            <th>Order Status</th>
+            <th>Order Date</th>
+            <th colspan="2" align="center">Operations</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <tr>
+            <td colspan="6" align="center">No Order Details</td>
+        </tr>
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            loadTableData();
+        });
+    </script>
+}
